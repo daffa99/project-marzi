@@ -106,7 +106,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     text = event.message.text
-    if text = "test" or text = "tes":
+    if text == "test" or text == "tes":
         confirm_template = ConfirmTemplate(text='Try Me!', actions=[
             MessageAction(label='Click Here to Try', text='Your so Beautiful'),
         ])

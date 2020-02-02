@@ -109,6 +109,7 @@ def handle_text_message(event):
     if text == "test" or text == "tes":
         confirm_template = ConfirmTemplate(text='Try Me!', actions=[
             MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+            MessageAction(label='Or Here', text="I don't want no girlfriend"),
         ])
         template_message = TemplateSendMessage(
             alt_text='Try Marzi', template=confirm_template)
@@ -122,6 +123,7 @@ def handle_text_message(event):
 def handle_follow(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
         MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+        MessageAction(label='Or Here', text="I don't want no girlfriend"),
     ])
     template_message = TemplateSendMessage(
         alt_text='Try Marzi', template=confirm_template)
@@ -131,6 +133,7 @@ def handle_follow(event):
 def handle_join(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
         MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+        MessageAction(label='Or Here', text="I don't want no girlfriend"),
     ])
     template_message = TemplateSendMessage(
         alt_text='Try Marzi', template=confirm_template)
@@ -140,6 +143,7 @@ def handle_join(event):
 def handle_member_joined(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
         MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+        MessageAction(label='Or Here', text="I don't want no girlfriend"),
     ])
     template_message = TemplateSendMessage(
         alt_text='Try Marzi', template=confirm_template)

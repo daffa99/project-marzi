@@ -1,5 +1,6 @@
 import os
 import demoji
+demoji.download_codes()
 import requests
 from requests_oauthlib import OAuth1Session
 

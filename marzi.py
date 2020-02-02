@@ -25,11 +25,12 @@ def marzi_act(text):
         else:
             new_text_list.append(word)
     res_text = ' '.join(new_text_list)
+    print(res_text)
 
     ### GET RESPONSE FROM GRAMMAR BOT ###
     res = requests.get(grammar_host, params={'text': res_text, 'language': 'en-US'})
     result = res.json()
-
+    print(result)
     if result['matches'] == []:
         return False
     ### CREATE MEME ###
@@ -43,7 +44,7 @@ def marzi_act(text):
         })
     else:
         meme = requests.post(meme_host, params={
-            'template_id': 181913649,
+            'template_id': 17035227,
             'username': 'sumarnowilly94',
             'password': 'Onramus1094',
             'text0': result['matches'][0]['context']['text'],
@@ -51,4 +52,7 @@ def marzi_act(text):
         })
     meme = meme.json()
     url_meme = meme['data']['url']
+    print(url_meme)
     return url_meme
+
+marzi_act("your so beautiful")

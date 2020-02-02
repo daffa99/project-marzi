@@ -108,7 +108,7 @@ def handle_text_message(event):
     text = event.message.text
     if text == "test" or text == "tes":
         confirm_template = ConfirmTemplate(text='Try Me!', actions=[
-            MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+            MessageAction(label='Click Here to Try', text="That's you're fault"),
             MessageAction(label='Or Here', text="I don't want no girlfriend"),
         ])
         template_message = TemplateSendMessage(
@@ -116,13 +116,14 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     else:
         url = marzi_act(text)
+        app.logger.info("url=" + url)
         if url is not False:
-            line_bot_api.reply_message(event.reply_token, ImageSendMessage(url))
+            line_bot_api.reply_message(event.reply_token, ImageSendMessage(url, url))
 
 @handler.add(FollowEvent)
 def handle_follow(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
-        MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+        MessageAction(label='Click Here to Try', text="That's you're fault"),
         MessageAction(label='Or Here', text="I don't want no girlfriend"),
     ])
     template_message = TemplateSendMessage(
@@ -132,7 +133,7 @@ def handle_follow(event):
 @handler.add(JoinEvent)
 def handle_join(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
-        MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+        MessageAction(label='Click Here to Try', text="That's you're fault"),
         MessageAction(label='Or Here', text="I don't want no girlfriend"),
     ])
     template_message = TemplateSendMessage(
@@ -142,7 +143,7 @@ def handle_join(event):
 @handler.add(MemberJoinedEvent)
 def handle_member_joined(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
-        MessageAction(label='Click Here to Try', text='Your so Beautiful'),
+        MessageAction(label='Click Here to Try', text="That's you're fault"),
         MessageAction(label='Or Here', text="I don't want no girlfriend"),
     ])
     template_message = TemplateSendMessage(

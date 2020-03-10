@@ -4,3 +4,5 @@ werkzeug>=0.15.4
 requests
 requests_oauthlib
 demoji
+nltk
+textblob

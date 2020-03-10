@@ -29,7 +29,9 @@ from flask import Flask, request, abort, send_from_directory
 from werkzeug.middleware.proxy_fix import ProxyFix
 # Marzi material
 from marzi import marzi_act
-
+# Check language
+from language import is_english
+# Linebot material
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -115,10 +117,11 @@ def handle_text_message(event):
             alt_text='Try Marzi', template=confirm_template)
         line_bot_api.reply_message(event.reply_token, template_message)
     else:
-        url = marzi_act(text)
-        app.logger.info("url=" + url)
-        if url is not False:
-            line_bot_api.reply_message(event.reply_token, ImageSendMessage(url, url))
+        if is_english:
+            url = marzi_act(text)
+            app.logger.info("url=" + url)
+            if url is not False:
+                line_bot_api.reply_message(event.reply_token, ImageSendMessage(url, url))
 
 @handler.add(FollowEvent)
 def handle_follow(event):

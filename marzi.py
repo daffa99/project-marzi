@@ -54,5 +54,3 @@ def marzi_act(text):
     url_meme = meme['data']['url']
     print(url_meme)
     return url_meme
-
-marzi_act("your so beautiful")

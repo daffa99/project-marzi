@@ -120,7 +120,10 @@ def handle_text_message(event):
     else:
         if is_english(text):
             url = marzi_act(text)
-            app.logger.info("url=" + url)
+            try:
+                app.logger.info("url=" + url)
+            except Exception as e:
+                raise e
             if url != False:
                 line_bot_api.reply_message(
                     event.reply_token, ImageSendMessage(url, url))

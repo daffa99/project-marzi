@@ -110,18 +110,21 @@ def handle_text_message(event):
     text = event.message.text
     if text == "test" or text == "tes":
         confirm_template = ConfirmTemplate(text='Try Me!', actions=[
-            MessageAction(label='Click Here to Try', text="That's you're fault"),
+            MessageAction(label='Click Here to Try',
+                          text="That's you're fault"),
             MessageAction(label='Or Here', text="I don't want no girlfriend"),
         ])
         template_message = TemplateSendMessage(
             alt_text='Try Marzi', template=confirm_template)
         line_bot_api.reply_message(event.reply_token, template_message)
     else:
-        if is_english:
+        if is_english(text):
             url = marzi_act(text)
             app.logger.info("url=" + url)
-            if url is not False:
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(url, url))
+            if url != False:
+                line_bot_api.reply_message(
+                    event.reply_token, ImageSendMessage(url, url))
+
 
 @handler.add(FollowEvent)
 def handle_follow(event):
@@ -133,6 +136,7 @@ def handle_follow(event):
         alt_text='Try Marzi', template=confirm_template)
     line_bot_api.reply_message(event.reply_token, template_message)
 
+
 @handler.add(JoinEvent)
 def handle_join(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
@@ -143,6 +147,7 @@ def handle_join(event):
         alt_text='Try Marzi', template=confirm_template)
     line_bot_api.reply_message(event.reply_token, template_message)
 
+
 @handler.add(MemberJoinedEvent)
 def handle_member_joined(event):
     confirm_template = ConfirmTemplate(text='Try Me!', actions=[
@@ -152,7 +157,6 @@ def handle_member_joined(event):
     template_message = TemplateSendMessage(
         alt_text='Try Marzi', template=confirm_template)
     line_bot_api.reply_message(event.reply_token, template_message)
-
 
 
 if __name__ == "__main__":
